@@ -1,0 +1,151 @@
+{
+  "main": {
+    "id": "47fc2ace28c962ee",
+    "type": "split",
+    "children": [
+      {
+        "id": "2d249d43f7d52c8f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "20d4fab74323e628",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ASSEMBLY - NOTES.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1fd4b288c11a8ded",
+    "type": "split",
+    "children": [
+      {
+        "id": "db37eff9bff04315",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a1f42ca09d838984",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "938a91cbe1759ce0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "c5f6da8978e3bad2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "35967d82bb9ee8dc",
+    "type": "split",
+    "children": [
+      {
+        "id": "134e42f06ff63ef6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5e5b223ace5d3fc2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "ASSEMBLY - NOTES.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5b3b942aa741f35a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "ASSEMBLY - NOTES.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "34f6d96cd1ceaa5d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "a047f651b28f3c34",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "ASSEMBLY - NOTES.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Otwórz okno szybkiej zmiany pliku": false,
+      "graph:Otwórz graf": false,
+      "canvas:Stwórz nowe płótno": false,
+      "daily-notes:Otwórz dzisiejszą notatkę": false,
+      "templates:Wstaw szablon": false,
+      "command-palette:Otwórz paletę poleceń": false
+    }
+  },
+  "active": "20d4fab74323e628",
+  "lastOpenFiles": []
+}
