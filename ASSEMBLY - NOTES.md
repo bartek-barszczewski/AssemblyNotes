@@ -1,4 +1,16 @@
 
+### Registers
+|            |                                           |                                                                             |
+| ---------- | ----------------------------------------- | --------------------------------------------------------------------------- |
+| `rax`      | Accumulator                               | Wyniki operacji arytmetycznych, zwracanie wartości z funkcji systemowych    |
+| `rbx`      | Base register                             | Może być używany do różnych celów                                           |
+| `rcx`      | Counter                                   | Wykorzystywany jako licznik pętli i w operacjach przesunięć                 |
+| `rdx`      | Data register                             | Do operacji arytmetycznych i systemowych                                    |
+| `rsi`      | Source Index                              | Używany jako źródło przy operacjach na pamięci, wywołania systemowe         |
+| `rdi`      | Destination Index                         | Używany jako cel przy operacjach na pamięci, wywołania systemowe            |
+| `rsp`      | Stack Pointer                             | Wskaźnik stosu, zawsze wskazuje na aktualny szczyt stosu                    |
+| `rbp`      | Base Pointer                              | Wskaźnik bazy stosu (do odwoływania się do zmiennych lokalnych w funkcjach) |
+| `r8`–`r15` | Dodatkowe rejestry ogólnego przeznaczenia | Zwiększają liczbę dostępnych rejestrów w architekturze 64-bitowej           |
 # syscalls
 https://x64.syscall.sh/
 
@@ -458,3 +470,49 @@ shr eax, 1              ; Divide eax by 2
 shl eax, 1              ; Multiply eax by 2
 
 ```
+
+
+### Compare Example - (if  else if else)
+
+
+```c
+section .data
+	msg db "End program", 0xA
+	len equ $ - msg
+	
+section .bss
+
+global _start
+section .text
+_start:
+	
+	mov rax, 2
+	mov rbx, 3
+	
+	cmp rax, rbx
+	jne elseif
+	
+	add rax, rbx
+
+elseif:
+	cmp rax, rcx
+	jne else
+	
+	add rcx, rbx
+	add rcx, rax
+
+else:
+	mov rcx, 1
+
+	mov rax, 1
+	mov rdi, 1
+	mov rsi, msg
+	mov rdx, len
+	syscall
+
+	mov rax, 60
+	xor rdi, rdi
+	syscall
+
+```
+
