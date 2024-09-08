@@ -516,3 +516,92 @@ else:
 
 ```
 
+
+### Loop (even numbers):
+```c
+section .data
+	buf db 0,0,0,0,0
+	len equ $ - buf
+	line db 0xA
+section .bss
+
+global _start
+section .text
+
+_start:		
+	xor r8, r8
+	xor r9, r9
+
+	mov r8, 1000
+    mov r9, 2
+
+	loop_dec:
+		call clear_buffer
+		xor rdx, rdx		
+		mov rax, r8
+
+		div r9
+		cmp rdx, 0
+		jne next_iteration
+		
+		mov rax, r8
+		mov rdi, buf + 3
+		xor rcx, rcx
+		
+		jmp convert_digits_to_ascii
+
+	clear_buffer:
+		push rbp
+		mov rbp, rsp
+		
+		mov byte [buf], 0
+	    mov byte [buf+1], 0
+	    mov byte [buf+2], 0
+	    mov byte [buf+3], 0
+
+		pop rbp
+		ret
+
+	convert_digits_to_ascii:
+		xor rdx, rdx
+		mov rbx, 10
+		div rbx
+		add dl, '0'
+		mov [rdi], dl
+		sub rdi, 1
+		add rcx, 1
+
+		test rax, rax
+		jnz convert_digits_to_ascii
+
+		jmp print_buffer
+		jmp new_line
+
+	print_buffer:
+		mov rax, 1
+		mov rdi, 1
+		mov rsi, buf
+		mov rdx, len
+		syscall
+				
+	new_line:
+		mov rax, 1
+		mov rdi, 1
+		mov rsi, line
+		mov rdx, 1
+		syscall
+			
+	next_iteration:
+		xor rdx, rdx
+		xor rax, rax
+		xor rdi, rdi
+		xor rsi, rsi
+					
+		sub r8, 1 
+		cmp r8, 0 
+		ja loop_dec
+
+	mov rax, 60
+	xor rdi, rdi
+	syscall
+```
