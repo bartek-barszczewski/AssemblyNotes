@@ -11,6 +11,11 @@
 | `rsp`      | Stack Pointer                             | Wskaźnik stosu, zawsze wskazuje na aktualny szczyt stosu                    |
 | `rbp`      | Base Pointer                              | Wskaźnik bazy stosu (do odwoływania się do zmiennych lokalnych w funkcjach) |
 | `r8`–`r15` | Dodatkowe rejestry ogólnego przeznaczenia | Zwiększają liczbę dostępnych rejestrów w architekturze 64-bitowej           |
+|            |                                           |                                                                             |
+
+![[Pasted image 20240909194352.png]]
+
+
 # syscalls
 https://x64.syscall.sh/
 
