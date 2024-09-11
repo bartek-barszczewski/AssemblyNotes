@@ -519,7 +519,7 @@ _start:
 ; x/8x $rbx <-- it doesn't work !!!
 ;
 section .data
-	num db 123
+	num dq 123
 
 section .bss
 section .text
@@ -539,7 +539,7 @@ _start:
 
 ```c
 section .data
-	msg db "End program", 0xA
+	msg dq "End program", 0xA
 	len equ $ - msg
 	
 section .bss
@@ -582,9 +582,9 @@ else:
 ### Loop (even numbers):
 ```c
 section .data
-	buf db 0,0,0,0,0
+	buf dq 0,0,0,0,0
 	len equ $ - buf
-	line db 0xA
+	line dq 0xA
 section .bss
 
 global _start
@@ -666,6 +666,7 @@ _start:
 	mov rax, 60
 	xor rdi, rdi
 	syscall
+                       
 ```
 
 
@@ -676,27 +677,4 @@ DQ  - 8 bytes = 64 bits
 DT - 10 bytes = 80 bits 
 
 
-```css
-; Co tu się dzieje?
-; czyzby argumenty byly pobierane od konca?
-; czy to procesor upycha bajty tak by oszczedzic miejsce w pamięci RAM??
-; czy to dlatego np. w rejestrze eax mimo wszystko i dodatkowo znajdzie sie wartosc z rejestru ebx ???
-; ------------------
-section .data
-        num1 db 15
-        num2 db 9
 
-section .bss
-
-global _start
-section .text
-
-_start:
-        mov al, [num1]
-        mov bl, [num2]
-        mov eax, [num1]
-        mov ebx, [num2]
-
-        mov eax, 1
-        int 80h
-```
