@@ -490,8 +490,52 @@ shl eax, 1              ; Multiply eax by 2
 ```
 
 
-### Compare Example - (if  else if else)
+### Move address number to register (without [] )
+```c
+; gdb
+; i r rbx
+; x/8x $rbx
+;
+section .data
+	num db 123
 
+section .bss
+section .text
+global _start
+
+_start:
+	mov rax, 1
+	mov rbx, num
+
+	mov rax, 60
+	xor rdi, rdi
+	syscall
+```
+
+### Move value number to register (with [])
+```c
+; gdb
+; i r rbx
+; x/8x $rbx <-- it doesn't work !!!
+;
+section .data
+	num db 123
+
+section .bss
+section .text
+global _start
+
+_start:
+	mov rax, 1
+	mov rbx, [num]
+
+	mov rax, 60
+	xor rdi, rdi
+	syscall
+```
+
+
+### Compare Example - (if  else if else)
 
 ```c
 section .data
@@ -622,4 +666,37 @@ _start:
 	mov rax, 60
 	xor rdi, rdi
 	syscall
+```
+
+
+DB  - 1 byte = 8 bits
+DW - 2 bytes = 16 bits
+DD -  4 bytes = 32 bits
+DQ  - 8 bytes = 64 bits
+DT - 10 bytes = 80 bits 
+
+
+```css
+; Co tu się dzieje?
+; czyzby argumenty byly pobierane od konca?
+; czy to procesor upycha bajty tak by oszczedzic miejsce w pamięci RAM??
+; czy to dlatego np. w rejestrze eax mimo wszystko i dodatkowo znajdzie sie wartosc z rejestru ebx ???
+; ------------------
+section .data
+        num1 db 15
+        num2 db 9
+
+section .bss
+
+global _start
+section .text
+
+_start:
+        mov al, [num1]
+        mov bl, [num2]
+        mov eax, [num1]
+        mov ebx, [num2]
+
+        mov eax, 1
+        int 80h
 ```
