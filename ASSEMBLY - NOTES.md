@@ -1,4 +1,17 @@
 
+![[Pasted image 20240909202450.png]]
+### Control Bus
+
+Magistrala sterująca, służy do przesyłania sygnałów sterujących pomiędzy procesorem a pozostałymi urządzeniami w systemie, umożliwiając koordynację i synchronizację działań.
+
+### Address Bus
+
+Magistrala adresowa (Address Bus) przenosi informacje o adresach pamięci, które procesor chce odczytać lub zapisać. Adresuje zarówno pamięć RAM, jak i inne urządzenia peryferyjne.
+
+### Data Bus
+
+Magistrala danych (Data Bus) przenosi dane pomiędzy procesorem, pamięcią RAM oraz innymi urządzeniami, umożliwiając wymianę informacji.
+
 ### Registers
 |            |                                           |                                                                             |
 | ---------- | ----------------------------------------- | --------------------------------------------------------------------------- |
@@ -11,6 +24,11 @@
 | `rsp`      | Stack Pointer                             | Wskaźnik stosu, zawsze wskazuje na aktualny szczyt stosu                    |
 | `rbp`      | Base Pointer                              | Wskaźnik bazy stosu (do odwoływania się do zmiennych lokalnych w funkcjach) |
 | `r8`–`r15` | Dodatkowe rejestry ogólnego przeznaczenia | Zwiększają liczbę dostępnych rejestrów w architekturze 64-bitowej           |
+|            |                                           |                                                                             |
+
+![[Pasted image 20240909194352.png]]
+
+
 # syscalls
 https://x64.syscall.sh/
 
