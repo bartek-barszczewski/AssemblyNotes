@@ -677,4 +677,114 @@ DQ  - 8 bytes = 64 bits
 DT - 10 bytes = 80 bits 
 
 
+### Set intel syntax in GDB 
+```bash
+echo "set disassembly-flavor intel" > ~/.gdbinit
+```
 
+
+
+### How to use resb?
+```c
+section .data
+	last_char db 91
+	first_char db 65
+	line db 0xA
+			
+	idx_start dd 0
+	IDX_STOP equ 26
+	LINE equ $ - line
+	
+section .bss
+	ascii_array RESB 27
+
+global _start
+section .text
+
+_start:
+	xor eax, eax
+	xor ebx, ebx
+	xor ecx, ecx
+	xor edx, edx
+
+	mov al, [first_char]
+	mov bl, [last_char]
+	
+	mov ecx, [idx_start]
+	mov edx, IDX_STOP
+
+	fill_ascii:
+		mov [ascii_array + ecx], al
+
+		add al, 1
+		add ecx, 1
+		
+		cmp ecx, edx
+		jl fill_ascii
+	
+	loop_print_ascii:
+		mov eax, 4
+		mov ebx, 1
+		lea ecx, [ascii_array]
+		mov edx, IDX_STOP
+		int 80h
+		
+	cmp eax, ebx
+	jl loop_print_ascii
+
+	new_line:
+		mov eax, 4
+		mov ebx, 1
+		lea ecx, line
+		mov edx, LINE
+		int 80h
+
+	exit:
+		mov eax, 1
+		xor ebx, ebx
+		int 80h
+
+```
+
+```c
+section .data
+    WRITE equ 1
+	F_DESC equ 1
+
+	buf0 dq 0x20454E4A454C4F4B
+    buf1 dq 0x4E454C4F4B5A5320
+    buf2 dq 0x61766E7947204549
+    buf3 dq 0x0000000000616C65
+   	buf4 dq 0x52205A2020202020
+    buf5 dq 0x494E205A554A2045
+    buf6 dq 0x000047554C442045
+    buf7 dq 0x2F2F3A7370747468
+    buf8 dq 0x65732E70656C6B73
+    buf9 dq 0x006D757469726375
+    bufA dq 0x61626F7A2F6C702E
+    bufB dq 0x72657665722D7A63
+    bufC dq 0x2D616E2D676E6973
+    bufD dq 0x070707076F77797A
+
+	SIZE equ $ - buf0	
+	EXIT_SUCCESS equ 0x60
+	
+section .text
+global _start
+
+_start:
+	
+	print:
+		mov rax, WRITE
+		mov rdi, F_DESC
+		lea rsi, [buf0]
+		mov rdx, SIZE
+		syscall
+
+	exit:
+		mov rax, 60
+		xor rdi, rdi
+		syscall
+
+
+```
