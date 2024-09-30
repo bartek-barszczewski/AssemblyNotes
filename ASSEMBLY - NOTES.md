@@ -433,6 +433,7 @@ div bx                  ; Divide dx:ax by bx (quotient in ax, remainder in dx)
 - **ZF**: Zero Flag (1 = Yes, 0 = No)
 - **SF**: Sign Flag (1 = Negative, 0 = Positive)
 - **PF**: Parity Flag (Even = 1, Odd = 0)
+- ![[Pasted image 20240923144023.png]]
 
 ### Jump operations
 ```
@@ -788,3 +789,4 @@ _start:
 
 
 ```
+
